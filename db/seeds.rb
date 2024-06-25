@@ -7,3 +7,13 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require 'faker'
+
+airports = []
+15.times do 
+  airports.push([Faker::University.unique.greek_organization, Faker::Address.unique.city + " Airport"])
+end
+
+airports.each do |a|
+  Airport.find_or_create_by!(code: a[0], city: a[1])
+end
