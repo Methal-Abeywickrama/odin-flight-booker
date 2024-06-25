@@ -17,3 +17,19 @@ end
 airports.each do |a|
   Airport.find_or_create_by!(code: a[0], city: a[1])
 end
+
+p Airport.all
+
+30.times do 
+  departure_time = Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :default)
+  departure_airport = Airport.find(rand(14) + 1)
+  arrival_airport = Airport.find(rand(14) + 1)
+  next if departure_airport == arrival_airport
+
+  Flight.create!(
+    departure_time: departure_time,
+    flight_duration: rand(500),
+    departure_airport: departure_airport,
+    arrival_airport: arrival_airport
+  )
+end

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  departure_time: 2024-06-25 09:37:11
+  flight_duration: 1
+  departure_airport: one
+  arrival_airport_references: MyString
+
+two:
+  departure_time: 2024-06-25 09:37:11
+  flight_duration: 1
+  departure_airport: two
+  arrival_airport_references: MyString
