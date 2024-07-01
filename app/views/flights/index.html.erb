@@ -1,0 +1,15 @@
+<h1>Flights#index</h1>
+<p>Find me in app/views/flights/index.html.erb</p>
+
+
+<% if params[:departure_airport_id].present? %>
+  <%= render 'inquired_flight' %>
+  <ul>
+    <%  @suitable_flights.each do |f| %>
+      <li><%= f.id %> </li>
+    <% end %>
+  </ul>
+
+<% else %>
+  <%= render 'inquire_flight' %>
+<% end %>

@@ -1,0 +1,15 @@
+<%= form_with url: flights_path, method: :get, local: true do |f| %>
+  <%= f.label :departure_airpot, "Departure" %>
+  <%= f.select :departure_airport_id, options_for_select(Airport.all.map { |a| [a.city, a.id] }, selected: params[:departure_airport_id]) %>
+  <%= f.label :arrival_airport, "Arrival" %>
+  <%= f.select:arrival_airport_id, options_for_select(Airport.all.map { |a| [a.city, a.id] }, selected: params[:arrival_airport_id]) %>
+  <%= label_tag :number_of_passengers, "Number of Passengers" %>
+  <%= select_tag :number_of_passengers, options_for_select([1, 2, 3, 4], selected: params[:number_of_passengers]) %>
+  <%= f.label :departure_date, "Date Of Departure" %>  
+  <%# <%= select_tag 'departure_date', options_for_select(Flight.all.map { |f| [f.departure_time.strftime("%Y-%m-%d"), f.departure_time] }, selected: Date.parse(params[:departure_date])) %> %>
+  <%= f.date_select :departure_date,
+                        default: params[:departure_date].present? ? Date.parse(params[:departure_date]) : nil %>
+
+  <%# <%= f.date_select :departure_date, Flight.all.map(&:departure_time) %> %>
+  <%= f.submit "Submit" %>
+<% end %>
