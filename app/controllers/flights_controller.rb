@@ -5,17 +5,18 @@ class FlightsController < ApplicationController
     if params[:departure_airport_id].present?
       p params
       puts 'class is'
-      # departure_date =  Date.new(
-      #   params["[departure_date(1i)]"].to_i,
-      #   params["[departure_date(2i)]"].to_i,
-      #   params["[departure_date(3i)]"].to_i
-      # )
-      p params["departure_date(1i)"]
       departure_date = Date.new(
-        params["departure_date(1i)"].to_i,
-        params["departure_date(2i)"].to_i,
-        params["departure_date(3i)"].to_i
+       params["[departure_date(1i)]"].to_i,
+        params["[departure_date(2i)]"].to_i,
+        params["[departure_date(3i)]"].to_i
       )
+      @selected_departure_date = departure_date
+      p params
+      # departure_date = Date.new(
+      #   params["departure_date(1i)"].to_i,
+      #   params["departure_date(2i)"].to_i,
+      #   params["departure_date(3i)"].to_i
+      # )
       p departure_date
       # Extract the parameters
       departure_airport_id = params[:departure_airport_id]
@@ -53,4 +54,6 @@ class FlightsController < ApplicationController
 
   def destroy
   end
+
+  
 end

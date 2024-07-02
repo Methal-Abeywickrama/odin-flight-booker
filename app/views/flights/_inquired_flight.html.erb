@@ -7,9 +7,13 @@
   <%= select_tag :number_of_passengers, options_for_select([1, 2, 3, 4], selected: params[:number_of_passengers]) %>
   <%= f.label :departure_date, "Date Of Departure" %>  
   <%# <%= select_tag 'departure_date', options_for_select(Flight.all.map { |f| [f.departure_time.strftime("%Y-%m-%d"), f.departure_time] }, selected: Date.parse(params[:departure_date])) %> %>
-  <%= f.date_select :departure_date,
-                        default: params[:departure_date].present? ? Date.parse(params[:departure_date]) : nil %>
-
+  <%# <%= f.date_select :departure_date,
+                        default: params[:departure_date].present? ? Date.parse(params[:departure_date]) : nil %> 
+  <%= f.date_select :departure_date, include_blank: true, selected: @selected_departure_date.present? ? @selected_departure_date : nil %>
+  <% puts 'debugiing' %>
+  <% p params %>
+  <% p params[:departure_date].present? %>
+  
   <%# <%= f.date_select :departure_date, Flight.all.map(&:departure_time) %> %>
   <%= f.submit "Submit" %>
 <% end %>
