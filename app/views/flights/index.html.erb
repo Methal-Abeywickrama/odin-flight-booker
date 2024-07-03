@@ -5,8 +5,15 @@
 <% if params[:departure_airport_id].present? %>
   <%= render 'inquired_flight' %>
   <ul>
-    <%  @suitable_flights.each do |f| %>
-      <li><%= f.id %> </li>
+    <%= form_with(url: new_booking_path, method: :get) do |form| %>
+      <%  @suitable_flights.each do |flight| %>
+        <li>
+          <%= form.label(:flight_id, "Flight no #{flight.id}") %>
+          <%= form.radio_button(:flight_id, flight.id) %>
+          <%= form.hidden_field :no_of_passengers, value: params[:number_of_passengers] %>
+        </li>
+      <% end %>
+      <%= form.submit("Submit") %>
     <% end %>
   </ul>
 

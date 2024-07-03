@@ -6,7 +6,7 @@ class FlightsController < ApplicationController
       p params
       puts 'class is'
       departure_date = Date.new(
-       params["[departure_date(1i)]"].to_i,
+        params["[departure_date(1i)]"].to_i,
         params["[departure_date(2i)]"].to_i,
         params["[departure_date(3i)]"].to_i
       )
