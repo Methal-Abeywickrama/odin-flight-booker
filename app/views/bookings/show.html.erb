@@ -1,0 +1,26 @@
+The booking details are 
+
+<ul>
+  <li>Flight no:</li>
+  <li><%= @flight.id %></li>
+  <li>Booking no:</li>
+  <li><%= @booking.id %></li>
+  <li>Arrival Airport:</li>
+  <li><%= @arrival_airport.city %></li>
+  <li>Departure Airport:</li>
+  <li><%= @departure_airport.city %></li>
+  <li>Departure time:</li>
+  <li><%= @flight.departure_time %></li>
+  <li>No of passengers:</li>
+  <li><%= @booking.passenger_bookings.count %></li>
+  <li>Passenger details:</li>
+  <ul>
+    <% @booking.passenger_bookings.each do |pb| %>
+      <li>Name:</li>
+      <li><%= pb.passenger.name %> </li>
+      <li>Email:</li>
+      <li><%= pb.passenger.email %></li>
+    <% end %>
+  </ul>
+
+</ul>

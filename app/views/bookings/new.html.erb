@@ -1,1 +1,27 @@
 this is the new views
+<% flash.each do |key, message| %>
+  <%= key %>
+  <%= message %>
+<% end %>
+ <%= form_with model: @booking do |b| %>
+  <%= b.hidden_field :flight_id, value: params[:flight_id] %>
+
+  <% @booking.passenger_bookings.each do |pb| %>
+    <%= b.fields_for :passenger_bookings, pb do |pb_fields| %>
+      <%= pb_fields.fields_for :passenger do |p| %>
+        <div class="field">
+          <%= p.label :name, 'Passenger Name:' %>
+          <%= p.text_field :name %>
+        </div>
+        <div class="field">
+          <%= p.label :email, 'Passenger Email:' %>
+          <%= p.email_field :email %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <div class="actions">
+    <%= b.submit %>
+  </div>
+<% end %>
